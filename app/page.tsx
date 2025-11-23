@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useRouter } from "next/navigation";
 import { setLogin } from "./store/Slice";
 import { useDispatch } from "react-redux";
+import Load from "./loading/Load";
 
 
 
@@ -16,12 +17,14 @@ export default function Home() {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const dispatch = useDispatch();
+  const [load, setLoad] = useState(false);
 
   // handle change input value
 
   // handle submit form
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoad(true);
     console.log(name, email, password);
     const res = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URI}/check-admin`, { name, email, password });
     if (!res.data.success) {
@@ -30,8 +33,9 @@ export default function Home() {
       dispatch(setLogin());
       router.push('/admin/home');
     }
+    setLoad(false);
   };
-  
+
   return (
     <>
       <div className="flex items-center justify-center h-[100dvh] w-[100dvw] bg-gray-500">
@@ -70,12 +74,12 @@ export default function Home() {
             </svg>
             <input type="password" placeholder="Password" className="bg-transparent text-zinc-600 dark:text-zinc-200 placeholder-zinc-500 dark:placeholder-zinc-400 outline-none text-sm w-full h-full pr-3" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
-
           <div className="mt-5 text-left">
           </div>
-
           <button type="submit" className="cursor-pointer mt-2 w-full h-11 rounded-full mb-10 text-white bg-indigo-500 hover:opacity-90 transition-opacity" >
-            Login
+            {
+              load ? <Load /> : "Login"
+            }
           </button>
         </form>
       </div>

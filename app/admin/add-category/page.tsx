@@ -92,7 +92,7 @@ const AddCategory = () => {
                log &&
                <div className="w-[90dvw] mx-auto">
                     <div className="">
-                         <p className='my-5 text-2xl font-semibold'>Add Product Here</p>
+                         <p className='my-5 text-2xl font-semibold'>Add Category Here</p>
                          <div className="name my-5 flex gap-3 flex-col">
                               <p>Category</p>
                               <input type="text" className='border-1 border-gray-500 outline-none h-10 lg:w-lg px-4' value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Category Name' />
