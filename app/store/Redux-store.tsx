@@ -4,7 +4,8 @@ import reducer from './Slice';
 const store = configureStore({
      reducer: {
           products : reducer
-     }
+     },
+     devTools: false
 })
 
 
