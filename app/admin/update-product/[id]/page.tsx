@@ -61,7 +61,7 @@ const UpdateProduct = () => {
     return (
         <>
             {
-                log && <div className="flex flex-col justify-between bg-white w-full mx-auto overflow-x-hidden">
+                log && <div className="flex flex-col justify-between w-full mx-auto overflow-x-hidden">
                     <form className="md:p-10 p-4 max-w-2xl" onSubmit={handleSubmit}>
                         <div>
                             <p className="text-base font-medium">Product Image</p>
