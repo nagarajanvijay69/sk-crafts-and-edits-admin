@@ -83,7 +83,7 @@ const AddProduct = () => {
         <>
             {
                 log &&
-                <div className="flex flex-col justify-between bg-white mx-auto w-[100%] md:w-[90%] lg:w-[80%] overflow-x-hidden">
+                <div className="flex flex-col justify-between mx-auto w-[100%] md:w-[90%] lg:w-[80%] overflow-x-hidden">
                     <form className="md:p-10 p-4 max-w-2xl" onSubmit={handleSubmit}>
                         <div>
                             <p className="text-base font-medium">Product Image</p>

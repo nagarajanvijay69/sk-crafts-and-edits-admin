@@ -93,13 +93,12 @@ const AddCategory = () => {
                <div className="w-[90dvw] mx-auto">
                     <div className="mx-auto w-[100%] md:w-[90%] lg:w-[80%]">
                          <div className="">
-                              <p className='my-5 text-2xl font-semibold'>Add Category Here</p>
                               <div className="name my-5 flex gap-3 flex-col">
-                                   <p>Category</p>
+                                   <p className='font-semibold'>Category</p>
                                    <input type="text" className='border-1 border-gray-500 outline-none h-10 lg:w-lg px-4' value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Category Name' />
                               </div>
                               <div className="img mt-5 flex gap-3 flex-col flex-wrap lg:w-lg">
-                                   <p>Image</p>
+                                   <p className='font-semibold'>Image</p>
                                    <label htmlFor='category-img' className="add my-5 bg-dark h-30 w-40">
                                         <img src={`${src}`} className='h-30' />
                                         <input type="file" onChange={(e) => {
@@ -118,21 +117,21 @@ const AddCategory = () => {
                                              : "ADD"
                                    }
                               </button>                    </div>
-                         <h1 className='text-2xl font-semibold mt-3'>Categories</h1>
+                         <h1 className='text-2xl font-semibold mt-10'>Categories</h1>
                          <ul className='flex flex-col gap-5 my-6'>
                               {
                                    categorys.map((item, index) => (
-                                        <li key={index} className='pl-5 flex gap-7 border-2 border-gray-500 items-center lg:w-lg'>
+                                        <li key={index} className='pl-5 flex gap-7 items-center lg:w-lg'>
                                              <img src={`${item.image}`} className='h-25 w-25 m-2 object-cover rounded' />{item.name}</li>
                                    ))
                               }
                          </ul>
-                         <div className="message mt-5 my-10">
-                              <p className='text-2xl font-semibold mt-3 mb-2'>Message</p>
-                              <div className="message border-2 border-gray-500 lg:w-lg px-2 py-5">
+                         <div className="message mt-10">
+                              <p className='text-2xl font-semibold'>Message</p>
+                              <div className="message lg:w-lg px-2 pb-10 pt-3">
                                    <div className="flex items-center ml-2">
                                         <p className='w-60'>Message : {`${messages ? messages.substring(0, 20) : "Message Not Found"}`}</p>
-                                        <button className='ml-5 bg-red-700 text-white h-8 w-18 rounded cursor-pointer flex items-center justify-center' onClick={deteleMessage}>
+                                        <button className='ml-5 bg-orange-700 text-white h-8 w-18 rounded cursor-pointer flex items-center justify-center' onClick={deteleMessage}>
                                              {
                                                   deload ?
                                                        <Load />
@@ -142,8 +141,9 @@ const AddCategory = () => {
                                         </button>
                                    </div>
                                    <div className="flex items-center ml-2">
-                                        <input type="text" className='border-2 border-gray-400 h-10 w-60 mt-2 outline-none px-3 rounded' value={message} onChange={(e) => setMessage(e.target.value)} />
-                                        <button className='ml-5 bg-green-700 text-white h-8 w-18 rounded cursor-pointer flex items-center justify-center' onClick={submitMessage}>
+                                        <input type="text" className='border-2 border-orange-950 h-10 w-60 mt-2 outline-none px-3 rounded'
+                                        placeholder='Enter Message Here....' value={message} onChange={(e) => setMessage(e.target.value)} />
+                                        <button className='ml-5 bg-orange-950 text-white h-8 w-18 rounded cursor-pointer flex items-center justify-center' onClick={submitMessage}>
                                              {
                                                   upload ?
                                                        <Load />

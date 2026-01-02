@@ -42,11 +42,11 @@ const Home = () => {
                 <div className="flex-1 py-10 flex flex-col justify-between mx-auto w-[100%] md:w-[90%] lg:w-[80%]">
                     <div className="w-full md:p-10 p-4">
                         <h2 className="pb-4 text-lg font-medium">All Products</h2>
-                        <div className="flex flex-col items-center mx-auto w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
+                        <div className="flex flex-col items-center mx-auto w-full overflow-hidden rounded-md border-2 shadow-xl border-gray-700">
                             {
                                 products[0] ?
                                     <table className="md:table-auto table-fixed w-full overflow-hidden">
-                                        <thead className="text-gray-900 text-sm text-left">
+                                        <thead className="text-sm text-left">
                                             <tr>
                                                 <th className="px-4 py-3 font-semibold truncate">Product</th>
                                                 <th className="px-4 py-3 font-semibold truncate">Category</th>
@@ -54,9 +54,9 @@ const Home = () => {
                                                 <th className="px-4 py-3 font-semibold truncate">Update</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="text-sm text-gray-500">
+                                        <tbody className="text-sm text-gray-950">
                                             {products.map((product, index) => (
-                                                <tr key={index} className="border-t border-gray-500/20">
+                                                <tr key={index} className="border-t-2 border-gray-700">
                                                     <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
                                                         <div className="rounded max-h-30 max-w-30">
                                                             <img src={`${product.image[0]}`} alt="Product" className="rounded h-30 object-cover w-30 m-2" />
