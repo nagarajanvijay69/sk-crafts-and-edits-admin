@@ -2,7 +2,7 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '../../store/Redux-store'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { initProduct } from '../../store/Slice'
@@ -24,7 +24,8 @@ const AddProduct = () => {
     const [offerPrice, setOfferprice] = useState<Number>(0);
     const [link, setLink] = useState("");
     const [images, setImages] = useState<File[]>([]);
-    const [category, setCategory] = useState("");
+    const categoryRef = useRef("");
+    const [category, setCategory] = useState("")
     const [tempImg, setTempImg] = useState<File[]>([]);
     const [load, setLoad] = useState(false);
 
@@ -50,7 +51,7 @@ const AddProduct = () => {
         form.append("price", String(price));
         form.append("offerPrice", String(offerPrice));
         form.append("link", link);
-        form.append("category", category);
+        form.append("category", categoryRef.current);
         tempImg.forEach((item)=>{
             form.append("images", item);
         })
@@ -106,7 +107,13 @@ const AddProduct = () => {
                         </div>
                         <div className="w-full flex flex-col gap-1 my-3">
                             <label className="text-base font-medium" htmlFor="category">Category</label>
-                            <select id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" value={category} onChange={(e) => setCategory(e.target.value)} >
+                            <select id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" value={categoryRef.current}
+                             onChange={(e)=>{
+                                categoryRef.current = e.target.value;
+                                 setCategory(e.target.value);
+                                 console.log("ref", categoryRef, "state", category)
+                             }}>
+                                <option value="" disabled>Select Category</option>
                                 {categorys.map((item, index) => (
                                     <option key={index} value={`${item.name}`}>{item.name}</option>
                                 ))}
