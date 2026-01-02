@@ -39,10 +39,10 @@ const Home = () => {
         <>
             {
                 log &&
-                <div className="flex-1 py-10 flex flex-col justify-between">
+                <div className="flex-1 py-10 flex flex-col justify-between mx-auto w-[100%] md:w-[90%] lg:w-[80%]">
                     <div className="w-full md:p-10 p-4">
                         <h2 className="pb-4 text-lg font-medium">All Products</h2>
-                        <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
+                        <div className="flex flex-col items-center mx-auto w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
                             {
                                 products[0] ?
                                     <table className="md:table-auto table-fixed w-full overflow-hidden">
@@ -58,14 +58,14 @@ const Home = () => {
                                             {products.map((product, index) => (
                                                 <tr key={index} className="border-t border-gray-500/20">
                                                     <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
-                                                        <div className="rounded overflow-hidden">
-                                                            <img src={`${product.image[0]}`} alt="Product" className="h-25 w-25 m-2" />
+                                                        <div className="rounded max-h-30 max-w-30">
+                                                            <img src={`${product.image[0]}`} alt="Product" className="rounded h-30 object-cover w-30 m-2" />
                                                         </div>
-                                                        <span className="truncate max-sm:hidden w-full">{product.name}</span>
+                                                        <span className="truncate max-sm:hidden w-full md:ml-3">{product.name}</span>
                                                     </td>
                                                     <td className="px-4 py-3">{product.category}</td>
                                                     <td className="px-4 py-3 max-sm:hidden">${`${product.offerPrice}`}</td>
-                                                    <td className="px-4 py-3 gap-3 items-center justify-center">
+                                                    <td className="px-4 py-3 gap-3">
                                                         <button className='cursor-pointer mr-3 h-10 w-10'><img src="../edit.png" onClick={() => router.push(`/admin/update-product/${product._id}`)} className='size-7' /></button>
                                                         <button className='cursor-pointer h-10 w-10' onClick={() => handleDelete(product._id)}>
                                                             {

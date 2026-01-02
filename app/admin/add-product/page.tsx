@@ -83,7 +83,7 @@ const AddProduct = () => {
         <>
             {
                 log &&
-                <div className="flex flex-col justify-between bg-white w-full mx-auto overflow-x-hidden">
+                <div className="flex flex-col justify-between bg-white mx-auto w-[100%] md:w-[90%] lg:w-[80%] overflow-x-hidden">
                     <form className="md:p-10 p-4 max-w-2xl" onSubmit={handleSubmit}>
                         <div>
                             <p className="text-base font-medium">Product Image</p>
@@ -107,7 +107,6 @@ const AddProduct = () => {
                         <div className="w-full flex flex-col gap-1 my-3">
                             <label className="text-base font-medium" htmlFor="category">Category</label>
                             <select id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" value={category} onChange={(e) => setCategory(e.target.value)} >
-                                <option disabled>Select Category</option>
                                 {categorys.map((item, index) => (
                                     <option key={index} value={`${item.name}`}>{item.name}</option>
                                 ))}
@@ -127,7 +126,7 @@ const AddProduct = () => {
                                 <input id="offer-price" type="number" value={`${offerPrice}`} onChange={(e) => setOfferprice(Number(e.target.value))} placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
                             </div>
                         </div>
-                        <button className="mt-5 bg-gray-800 text-white font-medium rounded cursor-pointer flex items-center justify-center h-10 w-25" type="submit">
+                        <button className="mt-5 bg-orange-950 text-white font-medium rounded cursor-pointer flex items-center justify-center h-10 w-25" type="submit">
                             {
                               load ? 
                               < Load/>

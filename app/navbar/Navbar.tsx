@@ -24,7 +24,7 @@ const Navbar = () => {
 
      return <>
           {
-               log && <div className="nav-body bg-gradient-to-r from-gray-800 to-gray-500 text-white flex z-10 h-18 items-center justify-between px-5 relative w-full">
+               log && <div className="nav-body bg-orange-950 text-white flex z-10 h-18 items-center justify-between px-5 relative w-full">
                     <h1 className="text-2xl font-semibold text-brown-500 flex z-10"><Link href='/admin/home'>SK Edits and Crafts</Link></h1>
                     <ul className={`flex gap-7 z-0 flex-col lg:flex-row absolute lg:static pl-5 lg:pl-0 h-60 lg:h-auto ${Nav ? 'top-[80px] left-[0px] gap-7 pt-7  text-white bg-gradient-to-r from-gray-800 to-gray-500 w-full duration-500' : 'top-[-200px]'}`}>
                          <Link href="/admin/home"><li onClick={toggle}>Home</li></Link>

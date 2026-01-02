@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex items-center justify-center h-[100dvh] w-[100dvw] bg-gray-500">
+      <div className="flex items-center justify-center h-[100dvh] w-[100dvw] bg-gray-100">
         <form
           onSubmit={handleSubmit}
           className="w-[85%]  md:w-[350px] text-center border border-zinc-300/60 dark:border-zinc-700 rounded-2xl px-8 bg-white dark:bg-zinc-900"
