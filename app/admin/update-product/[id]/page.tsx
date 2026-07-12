@@ -60,62 +60,135 @@ const UpdateProduct = () => {
 
     return (
         <>
-            {
-                log && <div className="flex flex-col justify-between w-full mx-auto overflow-x-hidden">
-                    <form className="md:p-10 p-4 max-w-2xl" onSubmit={handleSubmit}>
-                        <div>
-                            <p className="text-base font-medium">Product Image</p>
-                            <div className="flex flex-wrap items-center gap-3 mt-2">
+            {log && (
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 min-h-screen">
+                    
+                    {/* Header */}
+                    <div className="space-y-1">
+                        <h1 className="text-3xl font-extrabold font-playfair text-slate-800">Update Product</h1>
+                        <p className="text-xs text-slate-500">Edit settings and update listing properties for this product</p>
+                    </div>
+
+                    <form className="bg-white rounded-3xl border border-slate-100 p-6 sm:p-8 shadow-sm space-y-6" onSubmit={handleSubmit}>
+                        
+                        {/* Current Images Preview */}
+                        <div className="space-y-2">
+                            <p className="text-sm font-bold text-slate-700">Product Images</p>
+                            <div className="flex flex-wrap items-center gap-3 pt-1">
                                 {product?.image.map((item, index) => (
-                                    <label key={index} htmlFor={`image${index}`}>
-                                        <img className="max-w-24 cursor-pointer" src={`${item}`} alt="uploadArea" width={100} height={100} />
-                                    </label>
+                                    <div key={index} className="w-20 h-20 rounded-xl overflow-hidden border border-slate-200 bg-slate-50 relative">
+                                        <img className="w-full h-full object-cover" src={`${item}`} alt="preview" />
+                                    </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2 my-3">
-                            <label className="text-base font-medium" htmlFor="product-name">Product Name</label>
-                            <input id="product-name" type="text" value={`${name}`} onChange={(e) => setName(e.target.value)} placeholder="Type here" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+
+                        {/* Product Name */}
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-sm font-bold text-slate-700" htmlFor="product-name">Product Name</label>
+                             <input 
+                                id="product-name" 
+                                type="text" 
+                                value={`${name}`} 
+                                onChange={(e) => setName(e.target.value)} 
+                                placeholder="E.g., Custom Photo Frame" 
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all font-medium" 
+                                required 
+                            />
                         </div>
-                        <div className="flex flex-col gap-2 my-3">
-                            <label className="text-base font-medium" htmlFor="product-description">Product Description</label>
-                            <textarea id="product-description" rows={4} value={`${discription}`} onChange={(e) => setDiscription(e.target.value)} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none" placeholder="Type here"></textarea>
+
+                        {/* Product Description */}
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-sm font-bold text-slate-700" htmlFor="product-description">Product Description</label>
+                            <textarea 
+                                id="product-description" 
+                                rows={4} 
+                                value={`${discription}`} 
+                                onChange={(e) => setDiscription(e.target.value)} 
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all resize-none font-medium leading-relaxed" 
+                                placeholder="Describe the materials..."
+                            />
                         </div>
-                        <div className="w-full flex flex-col gap-1 my-3">
-                            <label className="text-base font-medium" htmlFor="category">Category</label>
-                            <select id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" value={`${category}`} onChange={(e) => setCategory(e.target.value)} >
+
+                        {/* Category Select */}
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-sm font-bold text-slate-700" htmlFor="category">Category</label>
+                            <select 
+                                id="category" 
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all font-medium" 
+                                value={`${category}`} 
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
                                 <option value={`${product?.category}`}>{product?.category}</option>
                                 {categorys.map((item, index) => (
-                                    item.name != product?.category ?
+                                    item.name != product?.category ? (
                                         <option key={index} value={`${item.name}`}>{item.name}</option>
-                                        : null
+                                    ) : null
                                 ))}
                             </select>
                         </div>
-                        <div className="flex flex-col gap-2 my-3">
-                            <label className="text-base font-medium" htmlFor="product-name">Product Link</label>
-                            <input id="product-name" type="text" placeholder="Type here" value={`${link}`} onChange={(e) => setLink(e.target.value)} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+
+                        {/* Product Buy Link */}
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-sm font-bold text-slate-700" htmlFor="product-link">Purchase Link / WhatsApp URL</label>
+                            <input 
+                                id="product-link" 
+                                type="text" 
+                                placeholder="Type link details here" 
+                                value={`${link}`} 
+                                onChange={(e) => setLink(e.target.value)} 
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all font-medium" 
+                                required 
+                            />
                         </div>
-                        <div className="flex items-center gap-5 flex-wrap my3">
-                            <div className="flex-1 flex flex-col gap-1 w-32">
-                                <label className="text-base font-medium" htmlFor="product-price">Product Price</label>
-                                <input id="product-price" value={`${price}`} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+
+                        {/* Pricing Row */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-sm font-bold text-slate-700" htmlFor="product-price">Original Price (₹)</label>
+                                <input 
+                                    id="product-price" 
+                                    value={`${price}`} 
+                                    onChange={(e) => setPrice(Number(e.target.value))} 
+                                    type="number" 
+                                    placeholder="0" 
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all font-medium" 
+                                    required 
+                                />
                             </div>
-                            <div className="flex-1 flex flex-col gap-1 w-32">
-                                <label className="text-base font-medium" htmlFor="offer-price">Offer Price</label>
-                                <input id="offer-price" type="number" value={`${offerPrice}`} onChange={(e) => setOfferprice(Number(e.target.value))} placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-sm font-bold text-slate-700" htmlFor="offer-price">Offer Price (₹)</label>
+                                <input 
+                                    id="offer-price" 
+                                    type="number" 
+                                    value={`${offerPrice}`} 
+                                    onChange={(e) => setOfferprice(Number(e.target.value))} 
+                                    placeholder="0" 
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-pink/40 focus:border-brand-pink text-slate-800 text-sm transition-all font-medium" 
+                                    required 
+                                />
                             </div>
                         </div>
-                        <button className="mt-5 bg-gray-800 text-white font-medium rounded cursor-pointer flex items-center justify-center h-10 w-25" type="submit">
-                            {
-                                load ?
-                                    < Load />
-                                    : "UPDATE"
-                            }
-                        </button>
-                    </form >
-                </div >
-            }
+
+                        {/* Submit Buttons */}
+                        <div className="pt-4 flex justify-end gap-3">
+                            <button 
+                                type="button"
+                                onClick={() => router.push('/admin/home')}
+                                className="w-1/2 sm:w-28 h-12 rounded-xl border border-slate-200 text-slate-500 font-bold hover:bg-slate-50 transition-all flex items-center justify-center cursor-pointer text-sm"
+                            >
+                                Cancel
+                            </button>
+                            <button 
+                                className="w-1/2 sm:w-40 h-12 rounded-xl text-white font-bold brand-gradient-bg hover:opacity-95 shadow-md hover:shadow-lg transition-all flex items-center justify-center cursor-pointer text-sm" 
+                                type="submit"
+                            >
+                                {load ? <Load /> : "Update Product"}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            )}
         </>
     );
 };
